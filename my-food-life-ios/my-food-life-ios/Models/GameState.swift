@@ -21,6 +21,15 @@ class GameState: ObservableObject {
         self.totalScenarios = GameData.scenarios.count
     }
     
+    /// Initialize from saved data
+    init(savedData: SaveManager.SaveData) {
+        self.totalScenarios = GameData.scenarios.count
+        self.currentScenarioIndex = savedData.currentScenarioIndex
+        self.health = savedData.health
+        self.isGameActive = true
+        self.hasWon = false
+    }
+    
     /// Reset the game to initial state
     func reset() {
         currentScenarioIndex = 0
@@ -53,10 +62,26 @@ class GameState: ObservableObject {
             isGameActive = false
             hasWon = true
         }
+        
+        // Auto-save progress
+        saveGame()
     }
     
     /// Check if the game is over
     func isGameOver() -> Bool {
         return !isGameActive
+    }
+    
+    /// Save current game state
+    func saveGame() {
+        SaveManager.shared.saveGame(scenarioIndex: currentScenarioIndex, health: health)
+    }
+    
+    /// Load game from save
+    static func loadFromSave() -> GameState? {
+        guard let saveData = SaveManager.shared.loadGame() else {
+            return nil
+        }
+        return GameState(savedData: saveData)
     }
 }

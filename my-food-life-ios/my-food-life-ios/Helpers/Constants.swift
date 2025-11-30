@@ -8,25 +8,34 @@
 import SpriteKit
 
 struct GameColors {
-    // Background colors
-    static let bgPrimary = SKColor(hex: "#0a0e1a")
-    static let bgSecondary = SKColor(hex: "#141824")
-    static let bgCard = SKColor(hex: "#1e2332", alpha: 0.8)
+    // Figma Background colors
+    static let bgPrimary = SKColor(hex: "#C8B6E2") // Lavender background
+    static let bgSecondary = SKColor(hex: "#D4C4EC") // Lighter lavender
+    static let bgCard = SKColor(hex: "#F5EDD8", alpha: 0.95) // Cream/beige card
+    
+    // Logo and UI elements
+    static let logoCircle = SKColor(hex: "#F5F0E8") // Cream circle for logo
+    static let buttonFill = SKColor(hex: "#F5EDD8") // Cream button fill
+    static let buttonStroke = SKColor(hex: "#FF9B9B") // Pink/coral button border
     
     // Accent colors
-    static let accentPrimary = SKColor(hex: "#ff6b6b")
-    static let accentSecondary = SKColor(hex: "#4ecdc4")
+    static let accentPrimary = SKColor(hex: "#FF9B9B") // Pink/coral
+    static let accentSecondary = SKColor(hex: "#FFB6C1") // Light pink
     static let accentSuccess = SKColor(hex: "#95e1d3")
     static let accentDanger = SKColor(hex: "#ff4757")
     
     // Text colors
-    static let textPrimary = SKColor.white
-    static let textSecondary = SKColor(hex: "#b8c1ec")
+    static let textPrimary = SKColor(hex: "#2D2D2D") // Dark gray/black
+    static let textSecondary = SKColor(hex: "#4A4A4A") // Medium gray
     static let textMuted = SKColor(hex: "#6c7a9b")
     
-    // Gradient colors
-    static let gradientPurple1 = SKColor(hex: "#667eea")
-    static let gradientPurple2 = SKColor(hex: "#764ba2")
+    // Game screen specific
+    static let gameBackground = SKColor(hex: "#F5DEB3") // Tan/beige for game screen
+    static let heartPink = SKColor(hex: "#FFB6D9") // Pink hearts
+    
+    // Gradient colors (keeping for compatibility)
+    static let gradientPurple1 = SKColor(hex: "#C8B6E2")
+    static let gradientPurple2 = SKColor(hex: "#B8A6D2")
     static let gradientDanger1 = SKColor(hex: "#ff6b6b")
     static let gradientDanger2 = SKColor(hex: "#ee5a6f")
     static let gradientSuccess1 = SKColor(hex: "#4ecdc4")
@@ -34,6 +43,8 @@ struct GameColors {
 }
 
 struct GameFonts {
+    static let mainFontName = "Pixel Operator HB 8"
+    
     static let title: CGFloat = 48
     static let subtitle: CGFloat = 24
     static let body: CGFloat = 18

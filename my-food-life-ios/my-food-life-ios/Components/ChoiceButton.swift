@@ -20,17 +20,17 @@ class ChoiceButton: SKNode {
     init(choiceNumber: Int, width: CGFloat) {
         self.choiceNumber = choiceNumber
         
-        // Create background with rounded corners
+        // Create background with rounded corners (Figma style)
         let rect = CGRect(x: -width/2, y: -GameLayout.buttonHeight/2, width: width, height: GameLayout.buttonHeight)
         background = SKShapeNode(rect: rect, cornerRadius: GameLayout.cornerRadius)
-        background.fillColor = SKColor(hex: "#ffffff", alpha: 0.05)
-        background.strokeColor = SKColor(hex: "#ffffff", alpha: 0.1)
-        background.lineWidth = 2
+        background.fillColor = GameColors.buttonFill // Cream fill
+        background.strokeColor = GameColors.buttonStroke // Pink/coral border
+        background.lineWidth = 3
         
         // Create number badge (circle)
         let badgeRadius: CGFloat = 16
         numberBadge = SKShapeNode(circleOfRadius: badgeRadius)
-        numberBadge.fillColor = GameColors.gradientPurple1
+        numberBadge.fillColor = GameColors.accentPrimary // Pink badge
         numberBadge.strokeColor = .clear
         numberBadge.position = CGPoint(x: -width/2 + 40, y: 0)
         
@@ -86,8 +86,8 @@ class ChoiceButton: SKNode {
     }
     
     func reset() {
-        background.strokeColor = SKColor(hex: "#ffffff", alpha: 0.1)
-        background.fillColor = SKColor(hex: "#ffffff", alpha: 0.05)
+        background.strokeColor = GameColors.buttonStroke
+        background.fillColor = GameColors.buttonFill
         setScale(1.0)
     }
     

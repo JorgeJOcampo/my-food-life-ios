@@ -24,40 +24,45 @@ class GameScene: SKScene {
     private var backgroundNode: SKSpriteNode!
     private var cardBackground: SKShapeNode!
     
+    // Initialization
+    private let loadFromSave: Bool
+    
+    init(size: CGSize, loadFromSave: Bool = false) {
+        self.loadFromSave = loadFromSave
+        super.init(size: size)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.loadFromSave = false
+        super.init(coder: aDecoder)
+    }
+    
     override func didMove(to view: SKView) {
         setupBackground()
         setupUI()
-        gameState = GameState()
+        
+        // Load game state (either new or from save)
+        if loadFromSave, let savedState = GameState.loadFromSave() {
+            gameState = savedState
+        } else {
+            gameState = GameState()
+        }
+        
         loadScenario()
     }
     
     private func setupBackground() {
-        // Create gradient background
-        backgroundColor = GameColors.bgPrimary
+        // Tan/beige background for game screen (matching Figma)
+        backgroundColor = GameColors.gameBackground
         
-        // Add radial gradient effects (simulated with colored circles)
-        let gradient1 = SKShapeNode(circleOfRadius: 300)
-        gradient1.fillColor = GameColors.gradientPurple1
-        gradient1.alpha = 0.1
-        gradient1.position = CGPoint(x: size.width * 0.2, y: size.height * 0.5)
-        gradient1.zPosition = ZPositions.background
-        addChild(gradient1)
-        
-        let gradient2 = SKShapeNode(circleOfRadius: 300)
-        gradient2.fillColor = GameColors.accentSecondary
-        gradient2.alpha = 0.1
-        gradient2.position = CGPoint(x: size.width * 0.8, y: size.height * 0.8)
-        gradient2.zPosition = ZPositions.background
-        addChild(gradient2)
-        
-        // Create card background
+        // Create card background with lighter cream color
         let cardWidth = size.width - 40
         let cardHeight = size.height - 40
         let cardRect = CGRect(x: -cardWidth/2, y: -cardHeight/2, width: cardWidth, height: cardHeight)
         cardBackground = SKShapeNode(rect: cardRect, cornerRadius: 24)
         cardBackground.fillColor = GameColors.bgCard
-        cardBackground.strokeColor = SKColor(hex: "#ffffff", alpha: 0.1)
-        cardBackground.lineWidth = 1
+        cardBackground.strokeColor = SKColor(hex: "#D4A574", alpha: 0.3) // Subtle tan border
+        cardBackground.lineWidth = 2
         cardBackground.position = CGPoint(x: size.width/2, y: size.height/2)
         cardBackground.zPosition = ZPositions.background + 1
         addChild(cardBackground)

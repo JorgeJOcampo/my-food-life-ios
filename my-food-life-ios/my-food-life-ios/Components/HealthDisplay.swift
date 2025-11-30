@@ -8,7 +8,7 @@
 import SpriteKit
 
 class HealthDisplay: SKNode {
-    private var hearts: [SKLabelNode] = []
+    private var hearts: [SKSpriteNode] = []
     private let maxHealth: Int = 3
     
     override init() {
@@ -25,13 +25,12 @@ class HealthDisplay: SKNode {
         let startX: CGFloat = 0
         
         for i in 0..<maxHealth {
-            let heart = SKLabelNode(text: "❤️")
-            heart.fontSize = GameLayout.heartSize
+            let heart = SKSpriteNode(imageNamed: "heart_full")
+            // Scale to match design size (approx 32-40pt)
+            heart.size = CGSize(width: GameLayout.heartSize, height: GameLayout.heartSize)
             heart.position = CGPoint(x: startX + CGFloat(i) * (GameLayout.heartSize + spacing), y: 0)
             heart.name = "heart_\(i)"
-            heart.alpha = 0.3
             
-            // Add grayscale effect for empty hearts (simulated with alpha)
             addChild(heart)
             hearts.append(heart)
         }
@@ -41,20 +40,23 @@ class HealthDisplay: SKNode {
         for (index, heart) in hearts.enumerated() {
             if index < currentHealth {
                 // Filled heart
+                heart.texture = SKTexture(imageNamed: "heart_full")
                 heart.alpha = 1.0
-                heart.removeAllActions()
-                heart.run(SKAction.heartbeat())
+                
+                // Only animate if it's not already animating
+                if heart.action(forKey: "heartbeat") == nil {
+                    heart.run(SKAction.heartbeat(), withKey: "heartbeat")
+                }
             } else {
-                // Lost heart
-                heart.removeAllActions()
-                let loseAnimation = SKAction.sequence([
-                    SKAction.scale(to: 1.3, duration: 0.25),
-                    SKAction.group([
-                        SKAction.scale(to: 0.8, duration: 0.25),
-                        SKAction.fadeAlpha(to: 0.3, duration: 0.25)
-                    ])
-                ])
-                heart.run(loseAnimation)
+                // Empty heart
+                heart.texture = SKTexture(imageNamed: "heart_empty")
+                heart.removeAction(forKey: "heartbeat")
+                
+                // Reset scale if it was beating
+                heart.setScale(1.0)
+                
+                // Optional: Add a small shake or flash effect when losing health
+                // For now, just switching texture is enough as per design
             }
         }
     }

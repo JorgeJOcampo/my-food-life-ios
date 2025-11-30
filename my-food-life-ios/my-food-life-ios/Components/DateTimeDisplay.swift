@@ -8,21 +8,29 @@
 import SpriteKit
 
 class DateTimeDisplay: SKNode {
-    private let iconLabel: SKLabelNode
     private let textLabel: SKLabelNode
+    private let backgroundNode: SKShapeNode
     
     override init() {
-        iconLabel = SKLabelNode(text: "📅")
-        iconLabel.fontSize = 24
-        iconLabel.position = CGPoint(x: -10, y: 0)
+        // Create background box
+        let boxSize = CGSize(width: 120, height: 40)
+        backgroundNode = SKShapeNode(rectOf: boxSize)
+        backgroundNode.fillColor = SKColor(hex: "#F5EDD8") // Cream color
+        backgroundNode.strokeColor = SKColor(hex: "#2D2D2D") // Dark border
+        backgroundNode.lineWidth = 2
         
-        textLabel = SKLabelNode.createLabel(text: "", fontSize: GameFonts.small, color: GameColors.textSecondary)
-        textLabel.horizontalAlignmentMode = .left
-        textLabel.position = CGPoint(x: 20, y: 0)
+        // Create text label
+        textLabel = SKLabelNode(fontNamed: GameFonts.mainFontName)
+        textLabel.text = "01/98" // Placeholder
+        textLabel.fontSize = 24
+        textLabel.fontColor = SKColor(hex: "#2D2D2D")
+        textLabel.verticalAlignmentMode = .center
+        textLabel.horizontalAlignmentMode = .center
+        textLabel.position = CGPoint(x: 0, y: 0)
         
         super.init()
         
-        addChild(iconLabel)
+        addChild(backgroundNode)
         addChild(textLabel)
     }
     

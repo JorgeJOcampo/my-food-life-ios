@@ -77,7 +77,7 @@ extension SKSpriteNode {
 extension SKLabelNode {
     /// Create a label with common settings
     static func createLabel(text: String, fontSize: CGFloat, color: SKColor = GameColors.textPrimary) -> SKLabelNode {
-        let label = SKLabelNode(fontNamed: "Inter-SemiBold")
+        let label = SKLabelNode(fontNamed: GameFonts.mainFontName)
         label.text = text
         label.fontSize = fontSize
         label.fontColor = color
