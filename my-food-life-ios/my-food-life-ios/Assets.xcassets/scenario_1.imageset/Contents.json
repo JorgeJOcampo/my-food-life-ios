@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Corazón.png",
+      "filename" : "Fondo FOOD.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Corazon FOOD.png",
+      "filename" : "Fondo FOOD (1).png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Corazón - FOOD.png",
+      "filename" : "Fondo FOOD (2).png",
       "idiom" : "universal",
       "scale" : "3x"
     }

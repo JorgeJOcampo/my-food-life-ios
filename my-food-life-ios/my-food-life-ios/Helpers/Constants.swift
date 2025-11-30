@@ -9,7 +9,7 @@ import SpriteKit
 
 struct GameColors {
     // Figma Background colors
-    static let bgPrimary = SKColor(hex: "#C8B6E2") // Lavender background
+    static let bgPrimary = SKColor(hex: "#DAD4F9") // Lavender background
     static let bgSecondary = SKColor(hex: "#D4C4EC") // Lighter lavender
     static let bgCard = SKColor(hex: "#F5EDD8", alpha: 0.95) // Cream/beige card
     
