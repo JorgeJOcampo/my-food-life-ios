@@ -116,9 +116,9 @@ class MainMenuScene: SKScene {
 
 class MenuButton: SKNode {
     private var background: SKShapeNode!
-    private var label: SKLabelNode!
     private let buttonWidth: CGFloat
     private let buttonHeight: CGFloat = 60
+    private let button = SKSpriteNode(imageNamed: "choice_button_background")
     
     var onTap: (() -> Void)?
     var isEnabled: Bool = true
@@ -127,31 +127,20 @@ class MenuButton: SKNode {
         self.buttonWidth = width
         super.init()
         
-        setupButton(text: text)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setupButton(text: String) {
-        let button = SKSpriteNode(imageNamed: "choice_button_background")
-        button.name = "button"
-        
-        label = SKLabelNode.createLabel(
+        let label = SKLabelNode.createLabel(
             text: text,
             fontSize: 22,
             color: GameColors.textMenu
         )
         label.fontName = "Pixel Operator HB 8"
-        label.verticalAlignmentMode = .center
-        label.horizontalAlignmentMode = .center
-        label.name = "buttonLabel"
         button.addChild(label)
         addChild(button)
-        
         // Enable touch
         isUserInteractionEnabled = true
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

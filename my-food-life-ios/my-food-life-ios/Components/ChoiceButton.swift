@@ -89,6 +89,7 @@ class ChoiceButton: SKNode {
     
     func reset() {
         setScale(1.0)
+        background.colorBlendFactor = 0.0
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
