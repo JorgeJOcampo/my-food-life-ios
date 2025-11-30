@@ -27,7 +27,7 @@ class HealthDisplay: SKNode {
         for i in 0..<maxHealth {
             let heart = SKSpriteNode(imageNamed: "heart_full")
             // Scale to match design size (approx 32-40pt)
-            heart.size = CGSize(width: GameLayout.heartSize, height: GameLayout.heartSize)
+            heart.size = CGSize(width: GameLayout.heartWidth, height: GameLayout.heartHeight)
             heart.position = CGPoint(x: startX + CGFloat(i) * (GameLayout.heartSize + spacing), y: 0)
             heart.name = "heart_\(i)"
             

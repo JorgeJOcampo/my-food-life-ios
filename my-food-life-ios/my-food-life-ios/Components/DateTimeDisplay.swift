@@ -22,7 +22,7 @@ class DateTimeDisplay: SKNode {
         // Create text label
         textLabel = SKLabelNode(fontNamed: GameFonts.mainFontName)
         textLabel.text = "01/98" // Placeholder
-        textLabel.fontSize = 24
+        textLabel.fontSize = 15
         textLabel.fontColor = SKColor(hex: "#2D2D2D")
         textLabel.verticalAlignmentMode = .center
         textLabel.horizontalAlignmentMode = .center

@@ -57,6 +57,8 @@ struct GameLayout {
     static let cornerRadius: CGFloat = 12
     static let buttonHeight: CGFloat = 60
     static let heartSize: CGFloat = 40
+    static let heartWidth: CGFloat = 46
+    static let heartHeight: CGFloat = 38
     static let foodImageHeight: CGFloat = 350
 }
 

@@ -52,20 +52,12 @@ class GameScene: SKScene {
     }
     
     private func setupBackground() {
-        // Tan/beige background for game screen (matching Figma)
-        backgroundColor = GameColors.gameBackground
-        
-        // Create card background with lighter cream color
-        let cardWidth = size.width - 40
-        let cardHeight = size.height - 40
-        let cardRect = CGRect(x: -cardWidth/2, y: -cardHeight/2, width: cardWidth, height: cardHeight)
-        cardBackground = SKShapeNode(rect: cardRect, cornerRadius: 24)
-        cardBackground.fillColor = GameColors.bgCard
-        cardBackground.strokeColor = SKColor(hex: "#D4A574", alpha: 0.3) // Subtle tan border
-        cardBackground.lineWidth = 2
-        cardBackground.position = CGPoint(x: size.width/2, y: size.height/2)
-        cardBackground.zPosition = ZPositions.background + 1
-        addChild(cardBackground)
+        // Set background image using scenario_1
+        backgroundNode = SKSpriteNode(imageNamed: "scenario_1")
+        backgroundNode.size = size
+        backgroundNode.position = CGPoint(x: size.width/2, y: size.height/2)
+        backgroundNode.zPosition = ZPositions.background
+        addChild(backgroundNode)
     }
     
     private func setupUI() {
@@ -121,6 +113,9 @@ class GameScene: SKScene {
             return
         }
         
+        // Update background based on current scenario/level
+        updateBackgroundForLevel()
+        
         // Fade out current image
         foodImageNode.run(SKAction.fadeOut(withDuration: GameAnimations.normal)) { [weak self] in
             guard let self = self else { return }
@@ -139,6 +134,18 @@ class GameScene: SKScene {
             
             // Fade in new image
             self.foodImageNode.run(SKAction.fadeIn(withDuration: GameAnimations.normal))
+        }
+    }
+    
+    private func updateBackgroundForLevel() {
+        // Update background image based on current scenario index
+        // For now using scenario_1, but can be extended to use different backgrounds per level
+        let backgroundImageName = "scenario_1"
+        
+        // Only update if the background node exists and we need to change it
+        if let backgroundNode = backgroundNode {
+            let newTexture = SKTexture(imageNamed: backgroundImageName)
+            backgroundNode.texture = newTexture
         }
     }
     

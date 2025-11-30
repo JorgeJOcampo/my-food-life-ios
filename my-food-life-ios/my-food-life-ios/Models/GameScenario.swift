@@ -35,7 +35,7 @@ class GameData {
     static let scenarios: [GameScenario] = [
         GameScenario(
             imageName: "fresh_apple",
-            dateLocation: "Monday, 7:30 AM - Kitchen",
+            dateLocation: "05/98",
             choice1: Choice(text: "Eat the apple for breakfast", isSafe: true),
             choice2: Choice(text: "Skip breakfast and rush to work", isSafe: true)
         ),
