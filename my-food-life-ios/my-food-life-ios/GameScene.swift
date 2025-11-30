@@ -7,6 +7,7 @@
 
 import SpriteKit
 import GameplayKit
+import UIKit
 
 class GameScene: SKScene {
     
@@ -62,17 +63,36 @@ class GameScene: SKScene {
     
     private func setupUI() {
         let padding: CGFloat = GameLayout.padding
-        let topY = size.height - 60
         
-        // Date/Time Display (top left)
+        // Get safe area insets to position relative to dynamic island
+        var topInset: CGFloat = 0
+        if let view = self.view {
+            if let window = view.window {
+                topInset = window.safeAreaInsets.top
+            } else if let viewController = view.next(UIViewController.self) {
+                topInset = viewController.view.safeAreaInsets.top
+            }
+        }
+        
+        // Dynamic island is typically ~126 points wide and centered horizontally
+        // Position elements on left and right sides of the dynamic island
+        let dynamicIslandWidth: CGFloat = 126
+        let dynamicIslandCenterX = size.width / 2
+        let dynamicIslandLeft = dynamicIslandCenterX - (dynamicIslandWidth / 2)
+        let dynamicIslandRight = dynamicIslandCenterX + (dynamicIslandWidth / 2)
+        
+        // Y position: top safe area + small offset for dynamic island alignment
+        let topY = size.height - topInset - 10
+        
+        // Date/Time Display (left of dynamic island)
         dateTimeDisplay = DateTimeDisplay()
-        dateTimeDisplay.position = CGPoint(x: padding + 100, y: topY)
+        dateTimeDisplay.position = CGPoint(x: dynamicIslandLeft - 50, y: topY)
         dateTimeDisplay.zPosition = ZPositions.ui
         addChild(dateTimeDisplay)
         
-        // Health Display (top right)
+        // Health Display (right of dynamic island)
         healthDisplay = HealthDisplay()
-        healthDisplay.position = CGPoint(x: size.width - 150, y: topY)
+        healthDisplay.position = CGPoint(x: dynamicIslandRight, y: topY)
         healthDisplay.zPosition = ZPositions.ui
         addChild(healthDisplay)
         healthDisplay.updateHealth(3)

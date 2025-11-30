@@ -6,6 +6,7 @@
 //
 
 import SpriteKit
+import UIKit
 
 extension SKColor {
     /// Initialize SKColor from hex string
@@ -84,5 +85,12 @@ extension SKLabelNode {
         label.verticalAlignmentMode = .center
         label.horizontalAlignmentMode = .center
         return label
+    }
+}
+
+extension UIResponder {
+    /// Find the nearest UIViewController in the responder chain
+    func next<T: UIResponder>(_ type: T.Type) -> T? {
+        return self.next as? T ?? self.next?.next(type)
     }
 }
