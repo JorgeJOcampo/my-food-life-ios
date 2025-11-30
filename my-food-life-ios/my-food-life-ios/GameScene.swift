@@ -108,7 +108,7 @@ class GameScene: SKScene {
         let buttonY1 = 180
         let buttonY2 = 100
         
-        choice1Button = ChoiceButton(choiceNumber: 1, width: buttonWidth)
+        choice1Button = ChoiceButton(width: buttonWidth)
         choice1Button.position = CGPoint(x: size.width/2, y: CGFloat(buttonY1))
         choice1Button.zPosition = ZPositions.buttons
         choice1Button.onTap = { [weak self] in
@@ -116,7 +116,7 @@ class GameScene: SKScene {
         }
         addChild(choice1Button)
         
-        choice2Button = ChoiceButton(choiceNumber: 2, width: buttonWidth)
+        choice2Button = ChoiceButton(width: buttonWidth)
         choice2Button.position = CGPoint(x: size.width/2, y: CGFloat(buttonY2))
         choice2Button.zPosition = ZPositions.buttons
         choice2Button.onTap = { [weak self] in

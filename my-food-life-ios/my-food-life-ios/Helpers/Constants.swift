@@ -48,9 +48,9 @@ struct GameFonts {
     
     static let title: CGFloat = 48
     static let subtitle: CGFloat = 24
-    static let body: CGFloat = 18
-    static let small: CGFloat = 16
-    static let tiny: CGFloat = 14
+    static let body: CGFloat = 14
+    static let small: CGFloat = 12
+    static let tiny: CGFloat = 10
 }
 
 struct GameLayout {

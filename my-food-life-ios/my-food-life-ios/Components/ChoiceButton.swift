@@ -9,16 +9,12 @@ import SpriteKit
 
 class ChoiceButton: SKNode {
     private let background: SKSpriteNode
-    private let numberBadge: SKShapeNode
-    private let numberLabel: SKLabelNode
     private let textLabel: SKLabelNode
-    private let choiceNumber: Int
     
     var isEnabled: Bool = true
     var onTap: (() -> Void)?
     
-    init(choiceNumber: Int, width: CGFloat) {
-        self.choiceNumber = choiceNumber
+    init(width: CGFloat) {
         
         background = SKSpriteNode(imageNamed: "choice_button_background")
         
@@ -28,25 +24,12 @@ class ChoiceButton: SKNode {
         background.zPosition = 0 // Start at 0, other elements will be above
         background.isHidden = false // Ensure it's visible
         
-        // Create number badge (circle)
-        let badgeRadius: CGFloat = 16
-        numberBadge = SKShapeNode(circleOfRadius: badgeRadius)
-        numberBadge.fillColor = GameColors.accentPrimary // Pink badge
-        numberBadge.strokeColor = .clear
-        numberBadge.position = CGPoint(x: -width/2 + 40, y: 0)
-        numberBadge.zPosition = 1 // Above background
-        
-        // Number label
-        numberLabel = SKLabelNode.createLabel(text: "\(choiceNumber)", fontSize: 18, color: .white)
-        numberLabel.fontName = "Inter-Bold"
-        numberLabel.position = CGPoint(x: 0, y: -1)
-        numberLabel.zPosition = 2 // Above badge
         
         // Text label
         textLabel = SKLabelNode.createLabel(text: "", fontSize: GameFonts.body, color: GameColors.textPrimary)
-        textLabel.fontName = "Inter-SemiBold"
+        textLabel.fontName = GameFonts.mainFontName
         textLabel.horizontalAlignmentMode = .left
-        textLabel.position = CGPoint(x: -width/2 + 70, y: 0)
+        textLabel.position = CGPoint(x: -width/2 + 50, y: 0)
         textLabel.preferredMaxLayoutWidth = width - 100
         textLabel.numberOfLines = 0
         textLabel.zPosition = 1 // Above background
@@ -54,8 +37,6 @@ class ChoiceButton: SKNode {
         super.init()
         
         addChild(background)
-        addChild(numberBadge)
-        numberBadge.addChild(numberLabel)
         addChild(textLabel)
         
         isUserInteractionEnabled = true
