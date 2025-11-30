@@ -34,23 +34,18 @@ class SplashScene: SKScene {
         logoCircle.zPosition = 10
         addChild(logoCircle)
         
-        // Add "LOGO" text placeholder
-        let logoText = SKLabelNode.createLabel(
-            text: "LOGO",
-            fontSize: 32,
-            color: GameColors.textPrimary
-        )
-        logoText.position = CGPoint(x: size.width / 2, y: size.height / 2 - 10)
-        logoText.zPosition = 11
-        addChild(logoText)
+        let logoImg = SKSpriteNode(imageNamed: "logo")
+        logoImg.position = CGPoint(x: size.width / 2, y: size.height / 2 - 10)
+        logoImg.zPosition = 11
+        addChild(logoImg)
         
         // Subtle fade-in animation
         logoCircle.alpha = 0
-        logoText.alpha = 0
+        logoImg.alpha = 0
         
         let fadeIn = SKAction.fadeIn(withDuration: 0.8)
         logoCircle.run(fadeIn)
-        logoText.run(fadeIn)
+        logoImg.run(fadeIn)
     }
     
     private func transitionToMainMenu() {

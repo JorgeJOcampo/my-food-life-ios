@@ -33,67 +33,118 @@ struct GameScenario {
 /// All game scenarios
 class GameData {
     static let scenarios: [GameScenario] = [
+
         GameScenario(
-            imageName: "fresh_apple",
-            dateLocation: "05/98",
-            choice1: Choice(text: "Eat the apple for breakfast", isSafe: true),
-            choice2: Choice(text: "Skip breakfast and rush to work", isSafe: true)
-        ),
-        GameScenario(
-            imageName: "fresh_sandwich",
-            dateLocation: "Monday, 1:00 PM - Office Cafeteria",
-            choice1: Choice(text: "Eat the fresh sandwich", isSafe: true),
-            choice2: Choice(text: "Save it for later", isSafe: true)
-        ),
-        GameScenario(
-            imageName: "moldy_bread",
-            dateLocation: "Tuesday, 8:00 AM - Kitchen Counter",
+            imageName: "apple",
+            dateLocation: "01/98",
             choice1: Choice(
-                text: "Eat it anyway, just a little mold",
-                isSafe: false,
-                damage: 1,
-                message: "The moldy bread made you sick! -1 ❤️"
+                text: "Take a bite of the shiny apple",
+                isSafe: true
             ),
-            choice2: Choice(text: "Throw it away and make toast instead", isSafe: true)
+            choice2: Choice(
+                text: "Skip it, maybe find something sweeter later",
+                isSafe: true
+            )
         ),
+
         GameScenario(
-            imageName: "fresh_milk",
-            dateLocation: "Tuesday, 9:00 AM - Refrigerator",
-            choice1: Choice(text: "Pour a glass and drink it", isSafe: true),
-            choice2: Choice(text: "Check the expiration date first", isSafe: true)
-        ),
-        GameScenario(
-            imageName: "old_yogurt",
-            dateLocation: "Wednesday, 2:00 PM - Office Desk",
+            imageName: "flan",
+            dateLocation: "02/98",
             choice1: Choice(
-                text: "Eat it, yogurt lasts forever right?",
-                isSafe: false,
-                damage: 1,
-                message: "The expired yogurt upset your stomach! -1 ❤️"
+                text: "Eat the flan—it looks perfectly caramelized",
+                isSafe: true
             ),
-            choice2: Choice(text: "Check the date and toss it", isSafe: true)
+            choice2: Choice(
+                text: "Leave it untouched, you're not in a dessert mood",
+                isSafe: true
+            )
         ),
+
         GameScenario(
-            imageName: "rotten_apple",
-            dateLocation: "Thursday, 6:00 PM - Fruit Bowl",
+            imageName: "french_toast",
+            dateLocation: "03/98",
             choice1: Choice(
-                text: "Cut off the bad parts and eat it",
+                text: "Eat the warm french toast dripping with syrup",
+                isSafe: true
+            ),
+            choice2: Choice(
+                text: "Avoid it, the sweetness feels overwhelming today",
+                isSafe: true
+            )
+        ),
+
+        GameScenario(
+            imageName: "mushroom",
+            dateLocation: "04/98",
+            choice1: Choice(
+                text: "Eat the lone mushroom you found in the woods",
                 isSafe: false,
                 damage: 2,
-                message: "The rotten apple was worse than it looked! -2 ❤️"
+                message: "Turns out… it wasn’t the edible kind. -2 ❤️"
             ),
-            choice2: Choice(text: "Throw it in the compost", isSafe: true)
+            choice2: Choice(
+                text: "Leave the mushroom untouched—better safe than sorry",
+                isSafe: true
+            )
         ),
+
         GameScenario(
-            imageName: "suspicious_drink",
-            dateLocation: "Friday, 11:00 PM - Mysterious Party",
+            imageName: "pie",
+            dateLocation: "05/98",
             choice1: Choice(
-                text: "Drink it without asking",
+                text: "Eat a generous slice of the freshly baked pie",
+                isSafe: true
+            ),
+            choice2: Choice(
+                text: "Save it for later, you're too full right now",
+                isSafe: true
+            )
+        ),
+
+        GameScenario(
+            imageName: "rotten_apple",
+            dateLocation: "06/98",
+            choice1: Choice(
+                text: "Eat it anyway—the rot is only on the surface… right?",
+                isSafe: false,
+                damage: 2,
+                message: "The rotten apple was a terrible choice. -2 ❤️"
+            ),
+            choice2: Choice(
+                text: "Toss it before the worms say hello",
+                isSafe: true
+            )
+        ),
+
+        GameScenario(
+            imageName: "rotten_french_toast",
+            dateLocation: "07/98",
+            choice1: Choice(
+                text: "Eat the spoiled french toast—it might still be good",
                 isSafe: false,
                 damage: 3,
-                message: "That was NOT safe to drink! 💀"
+                message: "That bite tasted like regret. And poison. 💀"
             ),
-            choice2: Choice(text: "Politely decline and get water", isSafe: true)
+            choice2: Choice(
+                text: "Throw it away before it starts moving on its own",
+                isSafe: true
+            )
+        ),
+
+        GameScenario(
+            imageName: "screw",
+            dateLocation: "08/98",
+            choice1: Choice(
+                text: "Eat the metal screw to prove your bravery",
+                isSafe: false,
+                damage: 3,
+                message: "It tore your insides apart. Why would you eat that?? 💀"
+            ),
+            choice2: Choice(
+                text: "Leave the screw on the table—it’s definitely not food",
+                isSafe: true
+            )
         )
     ]
+
 }

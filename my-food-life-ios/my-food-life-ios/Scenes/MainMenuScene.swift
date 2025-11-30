@@ -33,15 +33,10 @@ class MainMenuScene: SKScene {
         logoCircle.zPosition = 10
         addChild(logoCircle)
         
-        // Logo text
-        let logoText = SKLabelNode.createLabel(
-            text: "LOGO",
-            fontSize: 28,
-            color: GameColors.textPrimary
-        )
-        logoText.position = CGPoint(x: size.width / 2, y: size.height - 210)
-        logoText.zPosition = 11
-        addChild(logoText)
+        let logoImg = SKSpriteNode(imageNamed: "logo")
+        logoImg.position = CGPoint(x: size.width / 2, y: size.height - 210)
+        logoImg.zPosition = 11
+        addChild(logoImg)
     }
     
     private func setupButtons() {
@@ -140,15 +135,20 @@ class MenuButton: SKNode {
     }
     
     private func setupButton(text: String) {
-        // Button label
+        let button = SKSpriteNode(imageNamed: "choice_button_background")
+        button.name = "button"
+        
         label = SKLabelNode.createLabel(
             text: text,
             fontSize: 22,
-            color: GameColors.textPrimary
+            color: GameColors.textMenu
         )
         label.fontName = "Pixel Operator HB 8"
-        label.position = CGPoint(x: 0, y: -8)
-        addChild(label)
+        label.verticalAlignmentMode = .center
+        label.horizontalAlignmentMode = .center
+        label.name = "buttonLabel"
+        button.addChild(label)
+        addChild(button)
         
         // Enable touch
         isUserInteractionEnabled = true

@@ -99,8 +99,7 @@ class GameScene: SKScene {
         
         // Food Image
         foodImageNode = SKSpriteNode()
-        foodImageNode.size = CGSize(width: size.width - 80, height: GameLayout.foodImageHeight)
-        foodImageNode.position = CGPoint(x: size.width/2, y: size.height/2 + 50)
+        foodImageNode.position = CGPoint(x: size.width/2, y: size.height/2-100)
         foodImageNode.zPosition = ZPositions.foodImage
         addChild(foodImageNode)
         
@@ -143,6 +142,13 @@ class GameScene: SKScene {
             // Update content
             self.dateTimeDisplay.updateText(scenario.dateLocation)
             self.foodImageNode.texture = SKTexture(imageNamed: scenario.imageName)
+            if let texture = foodImageNode.texture {
+                let aspectRatio = texture.size().height / texture.size().width
+                let targetWidth = GameLayout.foodImageWidth
+                let targetHeight = targetWidth * aspectRatio
+                
+                self.foodImageNode.size = CGSize(width: targetWidth, height: targetHeight)
+            }
             self.choice1Button.setText(scenario.choice1.text)
             self.choice2Button.setText(scenario.choice2.text)
             

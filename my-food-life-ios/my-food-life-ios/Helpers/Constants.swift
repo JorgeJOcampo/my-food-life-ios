@@ -27,6 +27,7 @@ struct GameColors {
     // Text colors
     static let textPrimary = SKColor(hex: "#2D2D2D") // Dark gray/black
     static let textSecondary = SKColor(hex: "#4A4A4A") // Medium gray
+    static let textMenu = SKColor(hex: "#8F553F")
     static let textMuted = SKColor(hex: "#6c7a9b")
     
     // Game screen specific
@@ -59,7 +60,8 @@ struct GameLayout {
     static let heartSize: CGFloat = 40
     static let heartWidth: CGFloat = 46
     static let heartHeight: CGFloat = 38
-    static let foodImageHeight: CGFloat = 350
+    static let foodImageWidth: CGFloat = 257
+    static let foodImageHeight: CGFloat = 108
 }
 
 struct GameAnimations {
