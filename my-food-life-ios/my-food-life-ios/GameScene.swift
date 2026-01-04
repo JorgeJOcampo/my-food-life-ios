@@ -164,9 +164,9 @@ class GameScene: SKScene {
     }
     
     private func updateBackgroundForLevel() {
-        // Update background image based on current scenario index
-        // For now using scenario_1, but can be extended to use different backgrounds per level
-        let backgroundImageName = "scenario_1"
+        // Update background image based on current scenario's scenarioName
+        guard let scenario = gameState.getCurrentScenario() else { return }
+        let backgroundImageName = scenario.scenarioName
         
         // Only update if the background node exists and we need to change it
         if let backgroundNode = backgroundNode {
